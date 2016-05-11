@@ -2,13 +2,13 @@ webapp:
   build: .
   dockerfile: Dockerfile.webapp
   ports:
-   - "8088:8088"
+   - "8088:8080"
   environment:
    - PSQL_USER=interminer
    - PSQL_PWD=interminer0312
    - TOMCAT_USER=tomcat
    - TOMCAT_PWD=tomcat0312
-   - TOMCAT_PORT=8088
+   - TOMCAT_PORT=8080
    - PSQL_DB_NAME=malariamine
    - DB_NAME=malariamine
   volumes_from:
