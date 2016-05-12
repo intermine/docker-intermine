@@ -83,6 +83,8 @@ then
 
     else
 
+    # should we throw an exception here?
+    echo "[Intermine-script] No data found."
 	# should try to create db model & all
 	# build malariamine
 	cd /data/intermine/$DB_NAME/dbmodel
@@ -104,9 +106,6 @@ then
 
     # build the webapp
     echo "[Intermine-script] Building the webapp.."
-    cd /data/intermine/$DB_NAME
-    cd postprocess/
-    ant -v
     cd ../webapp/
     ant default remove-webapp release-webapp
 

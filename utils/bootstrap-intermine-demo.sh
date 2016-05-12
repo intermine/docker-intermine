@@ -78,7 +78,6 @@ ant default remove-webapp release-webapp
 
 # create psql dump
 mkdir /data/intermine-psql-dump/
-cd /data/intermine/malariamine/
-../bio/scripts/project_build -b -v localhost /data/intermine-psql-dump/$DB_NAME.$date.dump
+pg_dump -c -h localhost -U $PSQL_USER -f /data/intermine-psql-dump/$DB_NAME.$date.dump.final malariamine
 cd /data/intermine-psql-dump/
 ln -s $DB_NAME.$date.dump.final latest.dump
