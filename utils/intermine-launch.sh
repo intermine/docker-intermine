@@ -91,16 +91,16 @@ then
 	ant clean build-db
 
 	# # integrate other stuff
-	# cd ../integrate
-	# ant -Dsource=uniprot-malaria -v
-	# ant -Dsource=malaria-gff -v
-	# ant -Dsource=malaria-chromosome-fasta -v
-	# ant -v -Dsource=entrez-organism
-	# ant -v -Dsource=update-publications
-	# cd ../postprocess
-	# ant -v
-	# cd ../webapp
-	# ant build-db-userprofile
+	cd ../integrate
+	ant -Dsource=uniprot-malaria -v
+	ant -Dsource=malaria-gff -v
+	ant -Dsource=malaria-chromosome-fasta -v
+	ant -v -Dsource=entrez-organism
+	ant -v -Dsource=update-publications
+	cd ../postprocess
+	ant -v
+	cd ../webapp
+	ant build-db-userprofile
     fi
 
 
