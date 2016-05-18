@@ -32,7 +32,7 @@ then
 	sed -i "s/TOMCAT_PORT/$TOMCAT_PORT/g" .intermine/$DB_NAME.properties
 	cd /data
     else
-	echo "[Intermine-script] ERROR : didn't find /data/.intermine dir + properties file"
+	echo "[Intermine-script] ERROR : didn't find /data/.intermine/$DB_NAME.properties file"
 	exit
     fi
 
