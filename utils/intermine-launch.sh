@@ -111,8 +111,9 @@ then
 
 else
     echo "[Intermine-script] ERROR /data/intermine/$DB_NAME not found !!"
-    echo "[Intermine-script] Bootstraping Malariane demo.."
-    /opt/utils/bootstrap-intermine-demo.sh
+    exit
+    #echo "[Intermine-script] Bootstraping Malariane demo.."
+    #/opt/utils/bootstrap-intermine-demo.sh
 fi
 
 # stoping catalina
