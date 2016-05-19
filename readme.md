@@ -25,7 +25,7 @@ For all the instructions below, replace "yeastmine" with the name of your mine. 
 
 To bootstrap an existing container, you will need a directory that you will mount on the data volume container - as the volumes directive in the docker-compose file shows.
 
-In your `docker-intermine` directory, create a directory for your mine, e.g.:
+In your `docker-intermine` directory (that you created in the MalariaMine demo step above), create a directory for your mine, e.g.:
 
 ```
 /git/docker-intermine/$ mkdir yeastmine
