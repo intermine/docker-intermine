@@ -21,9 +21,9 @@ xdg-open http://localhost:8088/malariamine
 
 ### Install a Mine from PostgreSQL dump
 
-To bootstrap an existing container, you will need a directory that you will mount on the data volume container - as the volumes directive in the docker-compose file shows.
+For all the instructions below, replace "yeastmine" with the name of your mine. Assume everything is case-sensitive. 
 
-For all the instructions below, replace "YeastMine" with the name of your mine.
+To bootstrap an existing container, you will need a directory that you will mount on the data volume container - as the volumes directive in the docker-compose file shows.
 
 In your `docker-intermine` directory, create a directory for your mine, e.g.:
 
@@ -41,6 +41,27 @@ Copy your `.intermine/yeastmine` properties file in the new `.intermine` directo
 /git/docker-intermine/yeastmine$ cd .intermine
 /git/docker-intermine/yeastmine/.intermine$ cp ~/.intermine/yeastmine.properties .
 ```
+
+Update your properties to look like this:
+
+```
+db.production.datasource.serverName=localhost
+db.production.datasource.databaseName=DB_NAME
+db.production.datasource.user=PSQL_USER
+db.production.datasource.password=PSQL_PWD
+
+db.userprofile-production.datasource.serverName=localhost
+db.userprofile-production.datasource.databaseName=userprofile-DB_NAME
+db.userprofile-production.datasource.user=PSQL_USER
+db.userprofile-production.datasource.password=PSQL_PWD
+
+...
+
+webapp.manager=TOMCAT_USER
+webapp.password=TOMCAT_PWD
+
+```
+
 
 #### Database dump
 
