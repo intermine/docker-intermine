@@ -69,6 +69,48 @@ Copy the InterMine code to the local directory. Below is an example of checking 
 
 Must start with `/intermine` directory and include your mine's webapp, e.g. `/git/docker-intermine/intermine/yeastmine/webapp` is the directory from which docker will deploy the webapp.
 
+#### Update docker-compose.yml
+
+Replace `malariamine` with the name of your mine `yeastmine` in docker-compose.yml. Case sensitive.
+
+```
+# docker-compose.yml
+
+... 
+
+   - TOMCAT_PORT=8080
+   - PSQL_DB_NAME=malariamine
+   - DB_NAME=malariamine
+  volumes_from:
+   - data
+  links:
+   - postgres
+data:
+  image: centos:centos7
+  volumes:
+    - ./malariamine:/data
+    
+... 
+    
+```
+
+Change the tomcat and postgres passwords. Use a strong password, and one that you don't use anywhere else.
+
+```
+# docker-compose.yml
+
+... 
+
+  environment:
+   - PSQL_USER=interminer
+   - PSQL_PWD=interminer0312 <-- CHANGE
+   - TOMCAT_USER=tomcat
+   - TOMCAT_PWD=tomcat0312 <-- CHANGE
+   
+... 
+   
+```
+
 #### Launch the containers for YeastMine
 
 ```
