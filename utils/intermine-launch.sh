@@ -32,7 +32,7 @@ then
 	sed -i "s/TOMCAT_PORT/$TOMCAT_PORT/g" .intermine/$DB_NAME.properties
 	cd /data
     else
-	echo "[Intermine-script] ERROR : didn't find /data/.intermine dir + properties file"
+	echo "[Intermine-script] ERROR : didn't find /data/.intermine/$DB_NAME.properties file"
 	exit
     fi
 
@@ -82,37 +82,21 @@ then
 	fi
 
     else
-
-    # should we throw an exception here?
-    echo "[Intermine-script] No data found."
-	# should try to create db model & all
-	# build malariamine
-	cd /data/intermine/$DB_NAME/dbmodel
-	ant clean build-db
-
-	# # integrate other stuff
-	cd ../integrate
-	ant -Dsource=uniprot-malaria -v
-	ant -Dsource=malaria-gff -v
-	ant -Dsource=malaria-chromosome-fasta -v
-	ant -v -Dsource=entrez-organism
-	ant -v -Dsource=update-publications
-	cd ../postprocess
-	ant -v
-	cd ../webapp
-	ant build-db-userprofile
+        echo "[Intermine-script] No data found."
+        exit
     fi
 
 
     # build the webapp
     echo "[Intermine-script] Building the webapp.."
-    cd ../webapp/
+    cd /data/intermine/$DB_NAME/webapp
     ant default remove-webapp release-webapp
 
 else
     echo "[Intermine-script] ERROR /data/intermine/$DB_NAME not found !!"
-    echo "[Intermine-script] Bootstraping Malariane demo.."
-    /opt/utils/bootstrap-intermine-demo.sh
+    exit
+    #echo "[Intermine-script] Bootstraping Malariane demo.."
+    #/opt/utils/bootstrap-intermine-demo.sh
 fi
 
 # stoping catalina
