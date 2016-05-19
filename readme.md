@@ -13,10 +13,10 @@ docker and docker-compose
 This will build the MalariaMine demo project from 3 containers.
 
 ```
-git clone https://github.com/intermine/docker-intermine.git
-cd docker-intermine
-docker-compose -p malariamine up
-xdg-open http://localhost:8088/malariamine
+/git$ git clone https://github.com/intermine/docker-intermine.git
+/git$ cd docker-intermine
+/git/docker-intermine$ docker-compose -p malariamine up
+/git/docker-intermine$ xdg-open http://localhost:8088/malariamine
 ```
 
 ### Install a Mine from PostgreSQL dump
