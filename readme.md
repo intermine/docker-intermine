@@ -51,6 +51,12 @@ Copy the dump file to the local directory and make a sym link.
 /git/docker-intermine/yeastmine/intermine-psql-dump$ ln -s yeastmine-release.sql latest-dump 
 ```
 
+Here's an example command to get a dump file:
+
+```
+pg_dump -Fc -h localhost -U yeastmine -f /data/dump/yeastmine-release.sql yeastmine
+```
+
 #### Webapp
 
 Copy the InterMine code to the local directory.
@@ -59,7 +65,9 @@ Copy the InterMine code to the local directory.
 /git/docker-intermine/yeastmine$ git clone https://github.com/yeastgenome/intermine.git
 ```
 
-Launch the containers for yeastmine :
+Must start with `/intermine` directory and include your mine's webapp, e.g. `intermine/yeastmine`.
+
+#### Launch the containers for yeastmine :
 
 ```
 docker-compose -p yeastmine up
