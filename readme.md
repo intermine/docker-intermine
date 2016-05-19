@@ -8,9 +8,9 @@ Docker-compose project to build an intermine container instance.
 
 docker and docker-compose
 
-### Install malariamine demo
+### Install MalariaMine demo
 
-This will build the malariamine demo project from 3 containers.
+This will build the MalariaMine demo project from 3 containers.
 
 ```
 git clone https://github.com/intermine/docker-intermine.git
@@ -19,9 +19,11 @@ docker-compose -p malariamine up
 xdg-open http://localhost:8088/malariamine
 ```
 
-### Install a Mine from postgres dump
+### Install a Mine from PostgreSQL dump
 
 To bootstrap an existing container, you will need a directory that you will mount on the data volume container - as the volumes directive in the docker-compose file shows.
+
+For all the instructions below, replace "YeastMine" with the name of your mine.
 
 In your `docker-intermine` directory, create a directory for your mine, e.g.:
 
@@ -32,7 +34,7 @@ In your `docker-intermine` directory, create a directory for your mine, e.g.:
 
 #### Properties
 
-Copy your .intermine/yeastmine properties file.
+Copy your `.intermine/yeastmine` properties file in the new `.intermine` directory.
 
 ```
 /git/docker-intermine/yeastmine$ mkdir .intermine
@@ -42,7 +44,7 @@ Copy your .intermine/yeastmine properties file.
 
 #### Database dump
 
-Copy the dump file to the local directory and make a sym link.
+Copy the dump file to the `intermine-psql-dump` directory and make a sym link called `latest.dump`. The filename of the dump file does not matter.
 
 ```
 /git/docker-intermine/yeastmine$ mkdir intermine-psql-dump
@@ -67,7 +69,7 @@ Copy the InterMine code to the local directory.
 
 Must start with `/intermine` directory and include your mine's webapp, e.g. `intermine/yeastmine`.
 
-#### Launch the containers for yeastmine :
+#### Launch the containers for YeastMine
 
 ```
 docker-compose -p yeastmine up
