@@ -116,16 +116,12 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
 ```
 # docker-compose.yml
 
-
-
   environment:
    - PSQL_USER=interminer
-   - PSQL_PWD=interminer0312 <-- CHANGE
+   - PSQL_PWD=interminer0312 
    - TOMCAT_USER=tomcat
-   - TOMCAT_PWD=tomcat0312 <-- CHANGE
-   
+   - TOMCAT_PWD=tomcat0312 
 
-   
 ```
 
 #### Launch the containers for YeastMine
