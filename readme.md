@@ -61,13 +61,13 @@ pg_dump -Fc -h localhost -U yeastmine -f /data/dump/yeastmine-release.sql yeastm
 
 #### Webapp
 
-Copy the InterMine code to the local directory.
+Copy the InterMine code to the local directory. Below is an example of checking out the code for yeastmine, but you could also just copy the repository if you have it checked out locally.
 
 ```
 /git/docker-intermine/yeastmine$ git clone https://github.com/yeastgenome/intermine.git
 ```
 
-Must start with `/intermine` directory and include your mine's webapp, e.g. `intermine/yeastmine`.
+Must start with `/intermine` directory and include your mine's webapp, e.g. `/git/docker-intermine/intermine/yeastmine/webapp` is the directory from which docker will deploy the webapp.
 
 #### Launch the containers for YeastMine
 
