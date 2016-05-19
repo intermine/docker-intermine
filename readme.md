@@ -21,7 +21,7 @@ This will build the MalariaMine demo project from 3 containers.
 
 ### Install a Mine from PostgreSQL dump
 
-For all the instructions below, replace "yeastmine" with the name of your mine. Assume everything is case-sensitive. 
+For all the instructions below, replace "yeastmine" with the name of your mine. Assume everything is case-sensitive. The userprofile is built everytime, so this is not suitable (yet) for production InterMines.
 
 To bootstrap an existing container, you will need a directory that you will mount on the data volume container - as the volumes directive in the docker-compose file shows.
 
@@ -55,7 +55,7 @@ db.userprofile-production.datasource.databaseName=userprofile-DB_NAME
 db.userprofile-production.datasource.user=PSQL_USER
 db.userprofile-production.datasource.password=PSQL_PWD
 
-...
+
 
 webapp.manager=TOMCAT_USER
 webapp.password=TOMCAT_PWD
@@ -88,7 +88,7 @@ Copy the InterMine code to the local directory. Below is an example of checking 
 /git/docker-intermine/yeastmine$ git clone https://github.com/yeastgenome/intermine.git
 ```
 
-Must start with `/intermine` directory and include your mine's webapp, e.g. `/git/docker-intermine/intermine/yeastmine/webapp` is the directory from which docker will deploy the webapp.
+Must start with `/intermine` directory and include your mine's webapp. `/git/docker-intermine/intermine/yeastmine/webapp` is the directory from which docker will deploy the webapp.
 
 #### Update docker-compose.yml
 
@@ -96,8 +96,6 @@ Replace `malariamine` with the name of your mine `yeastmine` in docker-compose.y
 
 ```
 # docker-compose.yml
-
-... 
 
    - TOMCAT_PORT=8080
    - PSQL_DB_NAME=malariamine
@@ -111,8 +109,6 @@ data:
   volumes:
     - ./malariamine:/data
     
-... 
-    
 ```
 
 Change the tomcat and postgres passwords. Use a strong password, and one that you don't use anywhere else.
@@ -120,7 +116,7 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
 ```
 # docker-compose.yml
 
-... 
+
 
   environment:
    - PSQL_USER=interminer
@@ -128,7 +124,7 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
    - TOMCAT_USER=tomcat
    - TOMCAT_PWD=tomcat0312 <-- CHANGE
    
-... 
+
    
 ```
 
