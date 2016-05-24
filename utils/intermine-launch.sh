@@ -78,7 +78,8 @@ then
 	if [ -f ./latest.dump ]
 	then
 	    echo "[Intermine-script] Restauring postgres dump.."
-	    pg_restore -U postgres -h postgres -p 5432 -j 2 -d $PSQL_DB_NAME ./latest.dump
+            #pg_restore -U postgres -h postgres -d $PSQL_DB_NAME ./latest.dump
+            pg_restore -U postgres -h postgres -p 5432 -j 2 -d $PSQL_DB_NAME ./latest.dump
 	fi
 
     else
@@ -93,10 +94,9 @@ then
     ant default remove-webapp release-webapp
 
 else
-    echo "[Intermine-script] ERROR /data/intermine/$DB_NAME not found !!"
-    exit
-    #echo "[Intermine-script] Bootstraping Malariane demo.."
-    #/opt/utils/bootstrap-intermine-demo.sh
+    echo "[Intermine-script] ERROR /data/intermine/$DB_NAME not found !!"    
+    echo "[Intermine-script] Bootstraping Malariamine demo.."
+    /opt/utils/bootstrap-intermine-demo.sh
 fi
 
 # stoping catalina
