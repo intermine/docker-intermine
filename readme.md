@@ -19,6 +19,10 @@ This will build the MalariaMine demo project from 3 containers.
 /git/docker-intermine$ xdg-open http://localhost:8088/malariamine
 ```
 
+Once you have verified you can access the webapp and run a template, please shutdown the instance. This webapp is not meant to be public. 
+
+Also I am still working on getting the keyword search enabled.
+
 ### Install a Mine from PostgreSQL dump
 
 For all the instructions below, replace "yeastmine" with the name of your mine. Assume everything is case-sensitive. The userprofile is built everytime, so this is not suitable (yet) for production InterMines.
