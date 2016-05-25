@@ -71,7 +71,7 @@ ant -Dsource=malaria-chromosome-fasta -v
 ant -v -Dsource=entrez-organism
 ant -v -Dsource=update-publications
 cd ../postprocess
-ant -v
+ant -v -Daction=create-search-index
 cd ../webapp
 ant build-db-userprofile
 ant default remove-webapp release-webapp
