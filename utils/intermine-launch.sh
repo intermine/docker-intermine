@@ -18,7 +18,7 @@ then
     echo "[Intermine-script] Found $DB_NAME directory.."
     echo "[Intermine-script] Checking the setup of $DB_NAME instance.."
 
-    # check for properties file - FIX
+    # update property file with new credentials
     if [ -e /data/.intermine/$DB_NAME.properties ]
     then
 	cd /root/
