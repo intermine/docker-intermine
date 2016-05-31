@@ -21,8 +21,6 @@ This will build the MalariaMine demo project from 3 containers.
 
 Once you have verified you can access the webapp and run a template, please shutdown the instance. This webapp is not meant to be public. 
 
-Also I am still working on getting the keyword search enabled.
-
 ### Install a Mine from PostgreSQL dump
 
 For all the instructions below, replace "yeastmine" with the name of your mine. Assume everything is case-sensitive. The userprofile is built everytime, so this is not suitable (yet) for production InterMines.
@@ -50,12 +48,12 @@ Update your properties to look like this:
 
 ```
 db.production.datasource.serverName=localhost
-db.production.datasource.databaseName=DB_NAME
+db.production.datasource.databaseName=PSQL_DB_NAME
 db.production.datasource.user=PSQL_USER
 db.production.datasource.password=PSQL_PWD
 
 db.userprofile-production.datasource.serverName=localhost
-db.userprofile-production.datasource.databaseName=userprofile-DB_NAME
+db.userprofile-production.datasource.databaseName=userprofile-PSQL_DB_NAME
 db.userprofile-production.datasource.user=PSQL_USER
 db.userprofile-production.datasource.password=PSQL_PWD
 
@@ -134,4 +132,17 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
 docker-compose -p yeastmine up
 # wait for the postgre database to restore ..
 xdg-open http://localhost:8088/yeastmine
+```
+#### Help!
+
+1. You will need lots of space free in /tmp. That's where the search index, etc. is unpacked. I needed > 6 GB.
+2. If you make a change, you have to destroy your docker containers and relaunch your images. Below is the command I use but there are probably better ways to do this.
+3. 
+
+```
+# You have to stop the containers before you can remove them.
+docker ps -a |xargs docker rm
+# Remove the images too, if you have made changes.
+docker images -q |xargs docker rmi
+# someone reported they even had to restart docker. I don't know why.
 ```
