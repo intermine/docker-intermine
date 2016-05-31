@@ -73,7 +73,7 @@ Copy the dump file to the `intermine-psql-dump` directory and make a sym link ca
 /git/docker-intermine/yeastmine$ mkdir intermine-psql-dump
 /git/docker-intermine/yeastmine$ cd intermine-psql-dump
 /git/docker-intermine/yeastmine/intermine-psql-dump$ cp /data/dump/yeastmine-release.sql .
-/git/docker-intermine/yeastmine/intermine-psql-dump$ ln -s yeastmine-release.sql latest-dump 
+/git/docker-intermine/yeastmine/intermine-psql-dump$ ln -s yeastmine-release.sql latest.dump 
 ```
 
 Here's an example command to get a dump file:
@@ -90,7 +90,7 @@ Copy the InterMine code to the local directory. Below is an example of checking 
 /git/docker-intermine/yeastmine$ git clone https://github.com/yeastgenome/intermine.git
 ```
 
-Must start with `/intermine` directory and include your mine's webapp. `/git/docker-intermine/intermine/yeastmine/webapp` is the directory from which docker will deploy the webapp.
+Make sure you are deploy and base URLs are set to be `localhost:8080` in your properties file.
 
 #### Update docker-compose.yml
 
@@ -124,6 +124,19 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
    - TOMCAT_USER=tomcat
    - TOMCAT_PWD=tomcat0312 
 
+```
+
+#### Recap
+
+```
+   intermine-psql-dump/latest.dump --> yeastmine.dump.final
+   .intermine/yeastmine.properties
+   intermine
+      bio/...
+      imbuild/...
+      intermine/...
+      yeastmine/...
+      ...
 ```
 
 #### Launch the containers for YeastMine
