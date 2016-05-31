@@ -126,9 +126,13 @@ Change the tomcat and postgres passwords. Use a strong password, and one that yo
 
 ```
 
-#### Recap
+#### Summary
+
+In your $mine directory you should have your data dump, properties file and git checkout.
 
 ```
+# in /git/docker-intermine/yeastmine
+
    intermine-psql-dump/latest.dump --> yeastmine.dump.final
    .intermine/yeastmine.properties
    intermine
