@@ -65,22 +65,26 @@ then
     if [ -d /data/intermine-psql-dump ]
     then
 
-	# build dbmodel
-	echo "[Intermine-script] Building DB model.."
-	cd /data/intermine/$DB_NAME/dbmodel
-	ant clean build-db
-	# Build db profiles
-	echo "[Intermine-script] Building DB user-profiles.."
-	cd /data/intermine/$DB_NAME/webapp
-	ant build-db-userprofile
+	   # build dbmodel
+	   echo "[Intermine-script] Building DB model.."
+	   cd /data/intermine/$DB_NAME/dbmodel
+	   ant clean build-db
 
-	cd /data/intermine-psql-dump/
-	if [ -f ./latest.dump ]
-	then
-	    echo "[Intermine-script] Restauring postgres dump.."
-            #pg_restore -U postgres -h postgres -d $PSQL_DB_NAME ./latest.dump
-            pg_restore -U postgres -h postgres -p 5432 -j 2 -d $PSQL_DB_NAME ./latest.dump
-	fi
+	   cd /data/intermine-psql-dump/
+	   if [ -f ./latest.dump ]
+	   then
+	        echo "[Intermine-script] Restoring postgres dump.."
+             #pg_restore -U postgres -h postgres -d $PSQL_DB_NAME ./latest.dump
+             pg_restore -U postgres -h postgres -p 5432 -j 2 -d $PSQL_DB_NAME ./latest.dump
+	   fi
+
+       
+       if [ -f ./latest.userprofile.dump ]
+       then
+            echo "[Intermine-script] Restoring userprofile postgres dump.."
+             #pg_restore -U postgres -h postgres -d $PSQL_DB_NAME ./latest.dump
+             pg_restore -U postgres -h postgres -p 5432 -j 2 -d userprofile-$PSQL_DB_NAME ./latest.userprofile.dump
+       fi
 
     else
         echo "[Intermine-script] No data found."
