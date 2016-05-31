@@ -25,6 +25,7 @@ then
 	rm .intermine
 	ln -s /data/.intermine .
 	sed -i "s/=localhost/=$PSQL_HOST/g" .intermine/$DB_NAME.properties
+    sed -i "s/PSQL_DB_NAME/$PSQL_DB_NAME/g" .intermine/$DB_NAME.properties
 	sed -i "s/PSQL_USER/$PSQL_USER/g" .intermine/$DB_NAME.properties
 	sed -i "s/PSQL_PWD/$PSQL_PWD/g" .intermine/$DB_NAME.properties
 	sed -i "s/TOMCAT_USER/$TOMCAT_USER/g" .intermine/$DB_NAME.properties
