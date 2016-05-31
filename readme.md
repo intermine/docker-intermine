@@ -153,7 +153,8 @@ xdg-open http://localhost:8088/yeastmine
 #### Help!
 
 1. You will need lots of space free in `/tmp`. That's where the search index, etc. is unpacked. I needed > 6 GB.
-2. If you make a change, you have to destroy your docker containers and relaunch your images. Below is the command I use but there are probably better ways to do this.
+2. The keyword search fails until the index is loaded into memory. 
+3. If you make a change, you have to destroy your docker containers and relaunch your images. Below is the command I use but there are probably better ways to do this.
 
 ```
 # You have to stop the containers before you can remove them.
