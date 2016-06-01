@@ -80,7 +80,7 @@ then
 	then
 	    echo "[Intermine-script] Restauring postgres dump.."
             #pg_restore -U postgres -h postgres -d $PSQL_DB_NAME ./latest.dump
-            pg_restore -U postgres -h postgres -p 5432 -j 2 -d $PSQL_DB_NAME ./latest.dump
+            pg_restore -U postgres -h postgres -p 5432 -j 4 -d $PSQL_DB_NAME ./latest.dump
 	fi
 
     else
