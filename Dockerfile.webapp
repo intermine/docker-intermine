@@ -9,8 +9,8 @@ RUN yum update -y && yum install -y which git java-1.8.0-openjdk java-1.8.0-open
     perl-libxml-perl perl-Text-Glob perl-Date-Manip \
  && yum clean all
 RUN cd /opt \
- && curl https://www.apache.org/dist/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz | tar xvz \
- && mv apache-tomcat-7.0.69 tomcat \
+ && curl https://www.apache.org/dist/tomcat/tomcat-7/v7.0.70/bin/apache-tomcat-7.0.70.tar.gz | tar xvz \
+ && mv apache-tomcat-7.0.70 tomcat \
  && cd /opt; curl http://archive.apache.org/dist/ant/binaries/apache-ant-1.8.4-bin.tar.gz \
     | tar xvz \
  && mv apache-ant-1.8.4 ant
