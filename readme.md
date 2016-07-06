@@ -146,7 +146,7 @@ In your $mine directory you should have your data dump, properties file and git 
 #### Launch the containers for YeastMine
 
 ```
-docker-compose -p yeastmine up
+docker-compose -p yeastmine up -d
 # wait for the postgre database to restore ..
 xdg-open http://localhost:8088/yeastmine
 ```
