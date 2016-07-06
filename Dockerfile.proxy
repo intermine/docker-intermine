@@ -1,0 +1,33 @@
+#Version 0.0.2
+FROM ubuntu:14.04
+MAINTAINER Paul Browne "pfb29@cam.ac.uk"
+
+# Non-interactive terminal
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Install Apache2, PHP5 + modules
+RUN apt-get -yq update && apt-get install -yq apache2
+
+# Copy site content into container
+RUN mkdir -p /opt/proxy
+COPY ./proxy /opt/proxy
+
+# Enable Apache2 mods
+RUN a2enmod cgid && a2enmod headers
+RUN a2enmod proxy && a2enmod proxy_balancer && a2enmod proxy_http && a2enmod proxy_ajp
+RUN a2enmod rewrite && a2enmod ssl
+RUN a2enmod reqtimeout
+
+# Environment variables
+ENV APACHE_RUN_USER=www-data \
+        APACHE_RUN_GROUP=www-data \
+        APACHE_LOG_DIR=/var/log/apache2 \
+        APACHE_LOCK_DIR=/var/lock/apache2 \
+        APACHE_PID_FILE=/var/run/apache2.pid \
+	WEBAPP_HOST=webapp
+
+# Copy configs and data
+RUN ["/opt/proxy/install.sh"]
+
+# Start apache2
+CMD ["/usr/sbin/apache2ctl","-D","FOREGROUND"]
