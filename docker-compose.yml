@@ -1,8 +1,13 @@
+proxy:
+  build: .
+  dockerfile: Dockerfile.proxy
+  ports:
+  - "localhost:80:80"
+  links:
+  - webapp
 webapp:
   build: .
   dockerfile: Dockerfile.webapp
-  ports:
-   - "localhost:8088:8080"
   environment:
    - PSQL_USER=interminer
    - PSQL_PWD=interminer0312
