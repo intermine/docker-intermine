@@ -36,7 +36,6 @@
   <role rolename="manager-script"/>
   <user username="TOMCAT_USER" password="TOMCAT_PWD" roles="tomcat,manager-jmx,manager-script,manager-gui"/>
   <role rolename="admin-gui"/>
-  <user username="admin" password="admin0312" roles="admin-gui"/>
 
 </tomcat-users>
 
