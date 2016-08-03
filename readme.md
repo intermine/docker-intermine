@@ -67,16 +67,27 @@ webapp.password=TOMCAT_PWD
 
 #### Database dump
 
-Copy the dump file to the `intermine-psql-dump` directory. Use `scp` or `rsync` to get your dump file copied from your local machine. The filename of the dump file does not matter. Here's the command I used:
+##### Make the directory
 
-```
-rsync /data/flymine/release-43.0-29-june-2016.final ubuntu@52.203.55.22:/home/ubuntu/git/docker-intermine/flymine/release-43.0-29-june-2016.final -e 'ssh -i MY_NAME.pem' -av -h --progress 
-```
-
-Make a sym link called `latest.dump`. This is where the script will be looking for the dump file. Case sensitive.
+ This is where the script will be looking for the dump file. Everything is case sensitive.
 
 ```
 /git/docker-intermine/yeastmine$ mkdir intermine-psql-dump
+```
+
+##### Move the database dump 
+
+Copy the dump file to the `intermine-psql-dump` directory, you can use `scp` or `rsync`. The filename of the dump file does not matter. Here's the command I used:
+
+```
+rsync /data/flymine/release-43.0-29-june-2016.final ubuntu@52.203.55.22:/home/ubuntu/git/docker-intermine/flymine/intermine-psql-dump/release-43.0-29-june-2016.final -e 'ssh -i MY_NAME.pem' -av -h --progress 
+```
+
+##### Make a sym link
+
+Make a sym link called `latest.dump`.
+
+```
 /git/docker-intermine/yeastmine$ cd intermine-psql-dump
 /git/docker-intermine/yeastmine/intermine-psql-dump$ ln -s yeastmine-release.sql latest.dump 
 ```
