@@ -1,4 +1,4 @@
-# Intermine on Docker
+# Intermine on Docker (deprecated, use docker-intermine-gradle instead)
 
 Docker-compose project to build an intermine container instance.
 
@@ -179,3 +179,4 @@ docker ps -a |xargs docker rm
 docker images -q |xargs docker rmi
 # someone reported they even had to restart docker. I don't know why.
 ```
+# This repo is deprecated, use docker-intermine-gradle instead
